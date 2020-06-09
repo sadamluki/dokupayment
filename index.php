@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="https://staging.doku.com/doku-js/assets/css/doku.css"/>
 </head>
@@ -27,58 +27,10 @@
         <form action="payment/payment.php" method="post" name="frmTester">
 	    <div> <!-- mandiri clickpay -->
 	    <div class="styled-input" align='CENTER'>
-		FULL
+		PLEASE CHOOSE "FORM TYPE"
             </div>
-	        <input type="hidden" id="form_type" name="form_type" value="full"/>
-            <div class="styled-input">
-                <input type="text" id="mall_id" name="mall_id" value="8124" required />
-                <label>Mall ID</label>
-            </div>
-	    <div class="styled-input">
-                <input type="text" id="chain_merchant" name="chain_merchant" value="NA" required />
-                <label>Chain Merchant</label>
-            </div>
-	    <div class="styled-input">
-                <select name="payment_channel" id="payment_channel" value="payment_channel" required>
-                    <option value="15" selected="selected">Credit Card</option>
-                    <option value="04">Doku Wallet</option>
-                    <option value="02">Mandiri Clickpay</option>
-                    <option value="05">Convenience Store / VA Permata</option>
-                </select>
-            </div>
-	    <div class="styled-input">
-                <input type="text" id="trans_id" name="trans_id" value="<?php echo 'full_'. time()?>" required />
-                <label>Transaction ID</label>
-            </div>
-	    <div class="styled-input">
-                <input type="text" id="amount" name="amount" value="50000.00" required />
-                <label>Amount</label>
-            </div>
-	    <div class="styled-input">
-                <input type="text" id="currency" name="currency" value="360" required />
-                <label>Currency</label>
-            </div>
-	    <div class="styled-input">
-                <input type="text" id="cust_name" name="cust_name" value="Customer Name" required />
-                <label>Customer Name</label>
-            </div>
-	    <div class="styled-input">
-                <input type="text" id="cust_email" name="cust_email" value="customer@domail.com" required />
-                <label>Customer Email</label>
-            </div>
-	    <div class="styled-input">
-                <input type="text" id="cust_phone" name="cust_phone" value="0818000000" required />
-                <label>Customer Phone</label>
-            </div>
-	    <div class="styled-input">
-                <input type="text" id="cust_id" name="cust_id" value="" required />
-                <label>Customer ID</label>
-            </div>
-	    <div class="styled-input">
-                <input type="text" id="payment_token" name="payment_token" value="" required />
-                <label>Payment Token</label>
-            </div>
-	    <input type="button" value="Process Payment" class="default-btn" onclick="submitForm();"">
+	    <input type="button" value="FULL" class="default-btn" onclick="submitForm();"">
+	    <input type="button" value="INLINE" class="default-btn" onclick="submitForm1();"">
         </div><!-- mandiri clickpay -->
         </form>
     </div><!-- end content payment channel -->
@@ -90,11 +42,11 @@
 </div>
 <script type="text/javascript">
     function submitForm(){
-	if (document.getElementById('payment_channel').value == '05') {
-                    frmTester.action = 'payment/paymentDoku.php';
-                }else {
-                    frmTester.action = 'payment/payment.php';
-                }
+                    frmTester.action = './full/';
+        frmTester.submit();
+    }
+        function submitForm1(){
+                    frmTester.action = './inline/';
         frmTester.submit();
     }
 </script>

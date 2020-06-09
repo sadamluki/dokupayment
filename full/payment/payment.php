@@ -4,14 +4,12 @@ require_once('../Doku_Library/Doku.php');
 Doku_Initiate::$sharedKey = 'AiM3Rw8L50kp';
 Doku_Initiate::$mallId = $_POST['mall_id'];
 
-// var_dump($_POST);exit();
-
 $params = array(
 	'amount' => $_POST['amount'],
 	'invoice' => $_POST['trans_id'],
 	'currency' => $_POST['currency']
-    );
-    
+	);
+
 $words = Doku_Library::doCreateWords($params);
 
 $paymentchannel = $_POST['payment_channel'];
@@ -28,13 +26,13 @@ if ($paymentchannel=="02"){
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <link rel="stylesheet" type="text/css" href="https://staging.doku.com/doku-js/assets/css/doku.css"/>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src='https://staging.doku.com/doku-js/assets/js/doku-1.2.js?version=1467689258'></script>
+    <script type="text/javascript" src='https://staging.doku.com/doku-js/assets/js/doku.js?version=1467689258'></script>
 
 
     <script type="text/javascript">
@@ -91,7 +89,7 @@ if ($paymentchannel=="02"){
         </div>
         <div class="right-head fright">
             <div class="text-totalpay color-two">Total Payment ( IDR )</div>
-            <div class="amount color-one"><? echo number_format($_POST['amount'], 2, ',', '.') ?></div>
+            <div class="amount color-one"><?php echo number_format($_POST['amount'], 2, ',', '.') ?></div>
         </div>
         <div class="clear"></div>
     </div><!-- end head -->
@@ -129,8 +127,8 @@ if ($paymentchannel=="02"){
                     </li>
                     <li>
                         <div class="text-chacode">Challenge Code 2</div>
-                        <div class="num-chacode"><? echo number_format($_POST['amount'], 0, '', '') ?></div>
-                        <input type="hidden" name="CHALLENGE_CODE_2" value="<? echo number_format($_POST['amount'], 0, '', '') ?>"/>
+                        <div class="num-chacode"><?php echo number_format($_POST['amount'], 0, '', '') ?></div>
+                        <input type="hidden" name="CHALLENGE_CODE_2" value="<?php echo number_format($_POST['amount'], 0, '', '') ?>"/>
                         <div class="clear"></div>
                     </li>
                     <li>
@@ -145,10 +143,10 @@ if ($paymentchannel=="02"){
             <div class="validasi">
                 <div class="styled-input fleft width50">
                     <input type="text" required="" name="response_token" maxlength="6">
-                    <input type="hidden" name="invoice" value="<? echo $_POST['trans_id']; ?>">
-                    <input type="hidden" name="amount" value="<? echo $_POST['amount']; ?>">
-                    <input type="hidden" name="mallid" value="<? echo $_POST['mall_id']; ?>">
-                    <input type="hidden" name="chain" value="<? echo $_POST['chain_merchant']; ?>"> 
+                    <input type="hidden" name="invoice" value="<?php echo $_POST['trans_id']; ?>">
+                    <input type="hidden" name="amount" value="<?php echo $_POST['amount']; ?>">
+                    <input type="hidden" name="mallid" value="<?php echo $_POST['mall_id']; ?>">
+                    <input type="hidden" name="chain" value="<?php echo $_POST['chain_merchant']; ?>">
                     <label>Token Response</label>
                 </div>
                 <div class="clear"></div>
@@ -173,6 +171,7 @@ if ($paymentchannel=="02"){
 </html>
 <?php
 } else {
+
 if ($paymentchannel=="15"){
 $serverurl='./paymentDoku_CreditCard.php';
 } else if ($paymentchannel=="04"){
@@ -194,7 +193,7 @@ $serverurl='./paymentDoku.php';
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
-<script src="https://staging.doku.com/doku-js/assets/js/doku-1.2.js?version=<?php echo time()?>"></script> <!-- To prevent js caching -->
+<script src="https://staging.doku.com/doku-js/assets/js/doku.js?version=<?php echo time()?>"></script> <!-- To prevent js caching -->
 <link href="https://staging.doku.com/doku-js/assets/css/doku.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
 
@@ -206,7 +205,7 @@ $serverurl='./paymentDoku.php';
 		data.req_merchant_code = '<?php echo $_POST['mall_id']?>'; //mall id or merchant id
 		data.req_chain_merchant = '<?php echo $_POST['chain_merchant']?>'; //chain merchant id
 		data.req_payment_channel = '<?php echo $_POST['payment_channel']?>'; //payment channel
-		data.req_server_url = '<? echo $serverurl ?>'; //merchant payment url to receive pairing code & token
+		data.req_server_url = '<?php echo $serverurl ?>'; //merchant payment url to receive pairing code & token
 		data.req_transaction_id = '<?php echo $_POST['trans_id']?>'; //invoice no
 		data.req_amount = '<?php echo $_POST['amount']?>';
 		data.req_currency = '<?php echo $_POST['currency']?>'; //360 for IDR

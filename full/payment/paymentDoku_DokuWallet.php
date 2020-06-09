@@ -1,7 +1,7 @@
 <?php
-require_once('../Doku_Library/Doku.php');
+require_once('../core/Doku.php');
 
-Doku_Initiate::$sharedKey = 'AiM3Rw8L50kp';
+Doku_Initiate::$sharedKey = 'W7TYxdOp81y2';
 //Doku_Initiate::$sharedKey = 'k8UhY5t4RF4e';
 Doku_Initiate::$mallId = $_POST['doku_mall_id'];
 //Doku_Initiate::$payment_channel = $_POST['payment_channel'];

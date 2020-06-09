@@ -63,14 +63,16 @@ class Doku_Library {
 	}
 
 	public static function formatBasket($data){
-
+		//$parseBasket ='';
 		if(is_array($data)){
 			foreach($data as $basket){
-				$parseBasket = $parseBasket . $basket['name'] .','. $basket['amount'] .','. $basket['quantity'] .','. $basket['subtotal'] .';';
+				//$parseBasket = $parseBasket . $basket['name'] .','. $basket['amount'] .','. $basket['quantity'] .','. $basket['subtotal'] .';';
+				$parseBasket = $basket['name'] .','. $basket['amount'] .','. $basket['quantity'] .','. $basket['subtotal'] .';';
 			}
 		}else if(is_object($data)){
 			foreach($data as $basket){
-				$parseBasket = $parseBasket . $basket->name .','. $basket->amount .','. $basket->quantity .','. $basket->subtotal .';';
+				//$parseBasket = $parseBasket . $basket->name .','. $basket->amount .','. $basket->quantity .','. $basket->subtotal .';';
+				$parseBasket = $basket->name .','. $basket->amount .','. $basket->quantity .','. $basket->subtotal .';';
 			}
 		}
 

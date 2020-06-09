@@ -25,10 +25,10 @@ $basket[] = array(
 
 
 $customer = array(
-    'name' => 'TEST NAME',
-    'data_phone' => '08121111111',
-    'data_email' => 'test@test.com',
-    'data_address' => 'bojong gede #1 08/01'
+    'name' => 'Rafik',
+    'data_phone' => '087805586273',
+    'data_email' => 'rafik@gmail.com',
+    'data_address' => 'Denpasar Bali'
     );
 
 $data = array(
@@ -67,7 +67,11 @@ $data = array(
 
     );
 
+        // $dataPayment = json_decode(json_encode($dataPayment));
+        //echo "<pre>"; print_r($dataPayment); die;
+
     $responsePayment = Doku_Api::doPayment($dataPayment);
+    //print_r($responsePayment);
 
     if($responsePayment->res_response_code == '0000'){
 
@@ -88,15 +92,15 @@ $data = array(
 //        $responsePayment->res_redirect_url = '../example-payment/merchant-redirect-example.php';
         $responsePayment->res_redirect_url = '../payment/?TRANSIDMERCHANT='.$responsePayment->res_response_msg;
         $responsePayment->res_show_doku_page = true; //true if you want to show doku page first before redirecting to redirect url
-        
+
         //example : Response doku to merchant
-        //MIPPayment.processRequest ACKNOWLEDGE : {"res_approval_code":"245391","res_trans_id_merchant":"invoice_1461728094","res_amount":"50000.00","res_payment_date_time":"20160427003515","res_verify_score":"-1","res_verify_id":"","res_verify_status":"NA","res_words":"00a22b8d81a731d948605b682578d6a9074de5c47498312cd13abd0ef2f80e7a","res_response_msg":"SUCCESS","res_mcn":"5***********8754","res_mid":"094345145394964","res_bank":"Bank BNI","res_response_code":"0000","res_session_id":"b249a07ff9c5251dddc87997d482836ea3b8affd","res_payment_channel":"15"}        
-        
+        //MIPPayment.processRequest ACKNOWLEDGE : {"res_approval_code":"245391","res_trans_id_merchant":"invoice_1461728094","res_amount":"50000.00","res_payment_date_time":"20160427003515","res_verify_score":"-1","res_verify_id":"","res_verify_status":"NA","res_words":"00a22b8d81a731d948605b682578d6a9074de5c47498312cd13abd0ef2f80e7a","res_response_msg":"SUCCESS","res_mcn":"5***********8754","res_mid":"094345145394964","res_bank":"Bank BNI","res_response_code":"0000","res_session_id":"b249a07ff9c5251dddc87997d482836ea3b8affd","res_payment_channel":"15"}
+
         echo json_encode($responsePayment);
 
     }else{
 
-        echo json_encode($responsePayment);
+        //echo json_encode($responsePayment);
 
     }
 

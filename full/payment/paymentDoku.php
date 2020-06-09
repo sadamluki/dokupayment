@@ -3,7 +3,7 @@ require_once('../Doku_Library/Doku.php');
 
 date_default_timezone_set('Asia/Jakarta');
 
-Doku_Initiate::$sharedKey = 'AiM3Rw8L50kp';
+Doku_Initiate::$sharedKey = 'DRFCrfw5n216';
 Doku_Initiate::$mallId = $_POST['mall_id'];
 
 $params = array(
@@ -15,9 +15,9 @@ $params = array(
 $words = Doku_Library::doCreateWords($params);
 
 $customer = array(
-    'name' => 'TEST NAME',
-    'data_phone' => '08121111111',
-    'data_email' => 'test@test.com',
+    'name' => 'Rafik Testing',
+    'data_phone' => '087805586273',
+    'data_email' => 'rafik@doku.com',
     'data_address' => 'bojong gede #1 08/01'
 );
 
@@ -31,7 +31,8 @@ $dataPayment = array(
     'req_request_date_time' => date('YmdHis'),
     'req_session_id' => sha1(date('YmdHis')),
     'req_email' => $customer['data_email'],
-    'req_name' => $customer['name']
+    'req_name' => $customer['name'],
+    'req_expiry_time' => '360'
 );
 
 $response = Doku_Api::doGeneratePaycode($dataPayment);
